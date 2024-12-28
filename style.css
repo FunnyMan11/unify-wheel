@@ -186,3 +186,13 @@
   align-items: center;
   flex-direction: column;
 }
+
+#downloadBtn{
+  background-color: #fdcf3b;
+  padding: 5px 20px;
+  border-radius: 7px;
+  border: 1px solid black;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-left: 20px;
+}
