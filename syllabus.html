@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 style="text-align: center;" class="logo">Unify - ჯავასკრიპტის კურსის აღწერა</h1>
+    <div class="course-container">
+        <p>
+            კურსი არის სამ თვიანი, (24 დღე) და მოიცავს ყველა მნიშვნელოვან თეორიულ და პრაქტიკულ ასპექტს ჯავასკრიპტის
+            პროგრამულ ენაში,
+            ყოველი ლექციის შემდეგ გაქვთ წვდომა ლექციის ჩანაწერზე და ყველა იმ ტექსტურ მასალაზე, რაც უშუალოდ ლექციის
+            მსვლელობისას იქნება გამოყენებული.
+        </p>
+    </div>
+    <div class="faq-container">
+        <h1>ხშირად დასმული კითხვები</h1>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header" aria-expanded="true">
+                    რა უნდა ვიცოდეთ სანამ ჯავასკრიპტის შესწავლაზე გადავალთ ?  
+                    <span class="icon">-</span>
+                </button>
+                <div class="accordion-content open">
+                    <p>სანამ უშუალოდ ჯავასკრიპტის შესწავლას დაიწყებთ საჭიროა html-ის და css-ის ცოდნა</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    რა დამატებით მასალებს გვთავაზობს კურსი
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>კურსში იქნება უამრავი უამრავი დამხმარე მასალა და დავალება, რაც დაგეხმარებათ მასალის უკეთ ათვისებაში.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    რა ხდება იმ შემთხვევაში თუ ახსნილი მასალა ვერ გავიგე?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>მიწერე მენტორს რომელიც დაგეხმარება სხვადასხვა რესურსით მოგაწოდოს მეტი ინფორმაცია </p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    კურსის ღირებულება ? 
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>კურის ღირებულება თვიურად შეადგენს 100 ლარს</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    მექნება თუ არა წვდომა კურსის მატერიალებზე კურსის დასრულების შემდეგ?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>დიახ, კურსის მასალებზე გაქვთ მუდმივი წვდომა, მაგრამ მისი გამოყენება მხოლოდ თქვენ შეგიძლიათ</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    კურსის სილაბუსი
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    კურსის გადმოსაწერად დააწკაპეთ
+                    <button id="downloadBtn">გადმოწერა</button>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    დამატებით კურსის ავტორისგან!
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    კურსის აღების შემთხვევაში, დამატებით ისწავლით ისეთ ტექნოლოგიების გამოყენებას როგორებიცაა Github და Git
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact" style="color: white">
+        <p>დაინტერესებისთვის მოგვწერეთ - <br> დისქორდის username  <b> funnyman1803 </b> </p>  <br>
+        <p> <a style="color: white" href="https://www.facebook.com/piro.qobuladze.3">Facebook-ის პროფილი</a></p>
+
+    </div>
+    
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            // Create a temporary anchor element
+            const link = document.createElement('a');
+            link.href = './Syllabus.docx'; // Path to the file
+            link.download = 'Syllabus.docx'; // Suggested file name
+
+            // Programmatically click the anchor to trigger download
+            link.click();
+        });
+
+        document.querySelectorAll('.accordion-header').forEach((button, index) => {
+            const icon = button.querySelector('.icon');
+            const content = button.nextElementSibling;
+
+            // Make the first item open by default
+            if (index === 0) {
+                button.setAttribute('aria-expanded', 'true');
+                icon.textContent = '-';
+            }
+
+            button.addEventListener('click', () => {
+                const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-header').forEach(header => {
+                    header.setAttribute('aria-expanded', 'false');
+                    header.querySelector('.icon').textContent = '+';
+                    header.nextElementSibling.classList.remove('open');
+                });
+
+                // Open the clicked item if it wasn't already open
+                if (!isOpen) {
+                    button.setAttribute('aria-expanded', 'true');
+                    icon.textContent = '-';
+                    content.classList.add('open');
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>
